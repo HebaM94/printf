@@ -19,6 +19,11 @@ int handler(char character, va_list args)
         {'%', print_percent},
         {'d', print_decimal},
         {'i', print_decimal},
+        {'b', print_binary},
+        {'u', print_unsigned},
+        {'o', print_octal},
+        {'x', print_hexilower},
+        {'X', print_hexiupper},
         {'\0', NULL}
     };
     if (character == '\0')
@@ -32,7 +37,7 @@ int handler(char character, va_list args)
     if (count == 0)
     {
         write(1, &character, 1);
-        count += 2;
+        count ++;
     }
 
 return (count);
