@@ -17,14 +17,23 @@ int handler(char character, va_list args)
         {'c', print_char},
         {'s', print_string},
         {'%', print_percent},
+        {'d', print_decimal},
+        {'i', print_decimal},
         {'\0', NULL}
     };
     if (character == '\0')
         return (-1);
+    
     for (i = 0; specifiers[i].specif != '\0'; i++)
     {
         if (specifiers[i].specif == character)
-            count += specifiers[i].func(args);
+            count += specifiers[i].func(args); 
     }
+    if (count == 0)
+    {
+        write(1, &character, 1);
+        count += 2;
+    }
+
 return (count);
 }
